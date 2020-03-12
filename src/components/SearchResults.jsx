@@ -1,4 +1,5 @@
 import React from 'react'
+// import Link from '.Link'
 
 function SearchResults(props) {
     // const vertDiv = {display:'flex', flexDirection:'column'} as a way to make a resuable styling
@@ -31,3 +32,8 @@ function getResultsLinks(result, index) {
         </ul>
      )
 }
+
+//SAME AS THIS, WOULD HAVE TO LINK ABOVE 
+// function getResultsLinks(result) {
+//     return <Link title={result.title} />
+// }

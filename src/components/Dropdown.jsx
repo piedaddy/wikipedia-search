@@ -21,19 +21,19 @@ const ddContainer = {
 
 
 
-function Dropdown (props,setselectedItem, selectedItem) {
+function Dropdown ({openByDefault ,setSelectedItem, selectedItem, children}) {
 
-  const [isOpen, setIsOpen] = useState(false) //setting the state as low as possible!
+  const [isOpen, setIsOpen] = useState(!!openByDefault) //setting the state as low as possible!
 
   const handleDropdownClick=()=> {
     setIsOpen(!isOpen) //only works for BOOLEAN 
   }
   const handleItemClick = (e) => {
-    setselectedItem(e.target.innerText)
+    setSelectedItem(e.target.innerText)
     handleDropdownClick() //this will make it so that after the selectedITem state has changed to whichever item was clicked, the menu will disappear 
   }
 
-  const listItems = props.children.map(getClickableChildren(handleItemClick))
+  const listItems = children.map(getClickableChildren(handleItemClick))
   return (
     <div style={ddContainer}>
       <div onClick={handleDropdownClick} style={ddHeader}>
@@ -49,9 +49,9 @@ function Dropdown (props,setselectedItem, selectedItem) {
 export default Dropdown
 
 function getClickableChildren (clickHandler) {
-  return function(child) {
+  return function(child, index) {
     return (
-      <div onClick={clickHandler}>
+      <div key={index} onClick={clickHandler}>
         {child}
       </div>
     )

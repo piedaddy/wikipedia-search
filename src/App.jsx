@@ -9,6 +9,7 @@ function App () {
   const [ searchValue, setSearchValue ] = useState('')
   const [ searchResults , setSearchResults] = useState([])
   const [ currentOffset, setCurrentOffset] = useState(0)
+  const [selectedItem, setSelectedItem] = useState('Select Something')
 
   const handleInputChange = (e) => {
     setSearchValue(e.target.value)
@@ -55,6 +56,9 @@ function App () {
         handleInputChange={handleInputChange}
         handleSearchClick={handleSearchClick}
         handleKeyPress={handleKeyPress}
+        selectedItem = {selectedItem}
+        setSelectedItem={setSelectedItem}
+
       />
       <SearchResults results={searchResults} handleNextPageClick={handleNextPageClick} handleBackPageClick={handleBackPageClick}/>
   </div>
